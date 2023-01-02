@@ -4,21 +4,22 @@ import { InjectRepository } from '@nestjs/typeorm';
 import puppeteer from 'puppeteer';
 import { from } from 'rxjs';
 import { DataSource, Repository } from 'typeorm';
-import { AppartmentDto } from './DTO/appartment.dto';
-import { Appartment } from './Entity/appartment.entity'
+import { ApartmentDto } from './DTO/apartment.dto';
+import { Apartment } from './Entity/apartment.entity'
 
 @Injectable()
-export class AppartmentsService {
+export class ApartmentsService {
     constructor(
-        @InjectRepository(Appartment) private appartmentRepository: Repository<Appartment>, 
-        // private datasource : DataSource
+        @InjectRepository(Apartment) private apartmentRepository: Repository<Apartment>, 
     ) {}
 
     public async scrape() {
         let pageCounter = 1;
-        let appartments = [];
+        let apartments = [];
         const browser = await puppeteer.launch({
-            headless: false,
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            ignoreDefaultArgs: ['--disable-extensions']
         });
         const page = await browser.newPage();
         while (pageCounter <= 25) {
@@ -50,24 +51,24 @@ export class AppartmentsService {
 
                 return propertyList;
             });
-            appartments = appartments.concat(results)
+            apartments = apartments.concat(results)
             pageCounter++;
         }
         await browser.close();
         await this.emptyDb();
-        await this.saveToDb(appartments)
-        return appartments;
+        await this.saveToDb(apartments)
+        return apartments;
     }
 
-    async saveToDb(appartments:AppartmentDto[]){
-        return await this.appartmentRepository.save(appartments);
+    async saveToDb(apartments:ApartmentDto[]){
+        return await this.apartmentRepository.save(apartments);
     }
 
     async getAll(){
-        return await this.appartmentRepository.find();
+        return await this.apartmentRepository.find();
     }
 
     async emptyDb(){
-        return await this.appartmentRepository.delete({});
+        return await this.apartmentRepository.delete({});
     }
 }

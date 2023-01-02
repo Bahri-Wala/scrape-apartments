@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AppService {
-  URL = "http://localhost:3000/appartments";
+  URL = "http://localhost:3000/apartments";
 
   constructor(private http: HttpClient) { }
 
-  getAppartments(){
+  getApartments(){
     return this.http.get(this.URL);
   }
 }

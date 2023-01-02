@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty } from "class-validator";
 
-export class AppartmentDto {
+export class ApartmentDto {
   @IsNotEmpty()
   title: string;
 

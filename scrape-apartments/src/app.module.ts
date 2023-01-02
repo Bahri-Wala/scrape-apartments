@@ -2,7 +2,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AppartmentsModule } from './appartments/appartments.module';
+import { ApartmentsModule } from './apartments/apartments.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -24,7 +24,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }),
       inject: [ConfigService],
     }),
-    AppartmentsModule,
+    ApartmentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

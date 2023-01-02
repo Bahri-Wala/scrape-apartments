@@ -8,18 +8,18 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit {
   searchText:string = "";
-  appartments:any;
+  apartments:any;
   curPage:number = 1;
   itemsPerPage:number = 30;
-  totalAppartments:any;
+  totalApartments:any;
 
 
   constructor(private appService:AppService) {}
 
   ngOnInit(): void {
-    this.appService.getAppartments().subscribe((res:any) =>{
-      this.appartments = res;
-      this.totalAppartments = res.length;
+    this.appService.getApartments().subscribe((res:any) =>{
+      this.apartments = res;
+      this.totalApartments = res.length;
     })
   }
 

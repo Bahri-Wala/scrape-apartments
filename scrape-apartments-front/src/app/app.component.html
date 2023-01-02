@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>List of apartments</h1>
+  <input class="form-control search-bar" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+    placeholder="Start searching for an apartment...">
+  <div class="apartments">
+    <mat-card class="apartment-card" *ngFor="let apartment of apartments | filter:searchText | paginate: {itemsPerPage:itemsPerPage, currentPage: curPage}">
+      <mat-card-title>{{apartment.title}}</mat-card-title>
+      <img mat-card-image src={{apartment.image}}>
+    </mat-card>
+  </div>
+  <div class="pagination">
+    <pagination-controls (pageChange)="curPage = $event"></pagination-controls>
+  </div>
+</div>

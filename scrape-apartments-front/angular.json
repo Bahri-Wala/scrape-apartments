@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "scrape-appartments-front": {
+    "scrape-apartments-front": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/scrape-appartments-front",
+            "outputPath": "dist/scrape-apartments-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "scrape-appartments-front:build:production"
+              "browserTarget": "scrape-apartments-front:build:production"
             },
             "development": {
-              "browserTarget": "scrape-appartments-front:build:development"
+              "browserTarget": "scrape-apartments-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "scrape-appartments-front:build"
+            "browserTarget": "scrape-apartments-front:build"
           }
         },
         "test": {
